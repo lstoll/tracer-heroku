@@ -1,6 +1,9 @@
 {
 	"comment": "",
 	"ignore": "test",
+	"heroku": {
+		"install": ["./..."]
+	},
 	"package": [
 		{
 			"path": "context",
