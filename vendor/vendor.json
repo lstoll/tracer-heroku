@@ -1,9 +1,11 @@
 {
 	"comment": "",
-	"ignore": "test",
 	"heroku": {
-		"install": ["./..."]
+		"install": [
+			"./..."
+		]
 	},
+	"ignore": "test",
 	"package": [
 		{
 			"path": "context",
@@ -136,7 +138,7 @@
 			"revisionTime": "2016-04-11T19:08:41Z"
 		},
 		{
-			"checksumSHA1": "F6OUje1z+E2npoXPAhvYHGv4uZA=",
+			"checksumSHA1": "8e+Jq5tnL4SHHkhE0mIDmJYlJ7E=",
 			"path": "github.com/tracer/tracer",
 			"revision": "eea86f827ed19c8ab6583f44ad21784fcdf172d5",
 			"revisionTime": "2016-07-29T01:47:19Z"
