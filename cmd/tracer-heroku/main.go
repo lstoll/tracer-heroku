@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"flag"
 	"fmt"
 	"log"
@@ -18,7 +19,7 @@ import (
 	"github.com/lstoll/wsnet"
 
 	"github.com/tracer/tracer/server"
-	"github.com/tracer/tracer/storage/null"
+	"github.com/tracer/tracer/storage/postgres"
 	tgrpc "github.com/tracer/tracer/transport/grpc"
 	thttp "github.com/tracer/tracer/transport/http"
 	"github.com/tracer/tracer/transport/zipkinhttp"
@@ -49,15 +50,14 @@ func main() {
 		os.Exit(1)
 	}
 
-	/*db, err := sql.Open("postgres", *dburl)
+	db, err := sql.Open("postgres", *dburl)
 	if err != nil {
 		log.Fatalf("Error opening database: %q", err)
 	}
 	if err := db.Ping(); err != nil {
 		log.Fatalf("Error opening database: %q", err)
 	}
-	storage := postgres.New(&sql.DB{})*/
-	storage := &null.Null{}
+	storage := postgres.New(&sql.DB{})
 
 	srv := &server.Server{Storage: storage}
 

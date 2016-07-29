@@ -49,6 +49,36 @@
 			"revisionTime": "2014-07-20T21:03:42Z"
 		},
 		{
+			"checksumSHA1": "oxvSPYZbYMjGybO7er4ycq2627w=",
+			"path": "github.com/jmoiron/sqlx",
+			"revision": "bdae0c3219c3bdb92f3d7c70825018712787c933",
+			"revisionTime": "2016-06-15T15:18:03Z"
+		},
+		{
+			"checksumSHA1": "NJHTyLwheqVk7+syzj9UN7p1dKs=",
+			"path": "github.com/jmoiron/sqlx/reflectx",
+			"revision": "bdae0c3219c3bdb92f3d7c70825018712787c933",
+			"revisionTime": "2016-06-15T15:18:03Z"
+		},
+		{
+			"checksumSHA1": "QK3MNUdQwUBuznCHZcPijU/3DyI=",
+			"path": "github.com/lib/pq",
+			"revision": "4dd446efc17690bc53e154025146f73203b18309",
+			"revisionTime": "2016-06-23T22:06:37Z"
+		},
+		{
+			"checksumSHA1": "xppHi82MLqVx1eyQmbhTesAEjx8=",
+			"path": "github.com/lib/pq/oid",
+			"revision": "4dd446efc17690bc53e154025146f73203b18309",
+			"revisionTime": "2016-06-23T22:06:37Z"
+		},
+		{
+			"checksumSHA1": "lBhZqKT8s5E4hpMRy3WDWswhUb4=",
+			"path": "github.com/lstoll/wsnet",
+			"revision": "c805d453086e687b042fe039f7e663d5ae68f502",
+			"revisionTime": "2016-07-29T00:45:42Z"
+		},
+		{
 			"checksumSHA1": "bKMZjd2wPw13VwoE7mBeSv5djFA=",
 			"path": "github.com/matttproud/golang_protobuf_extensions/pbutil",
 			"revision": "c12348ce28de40eed0136aa2b644d0ee0650e56c",
@@ -133,6 +163,12 @@
 			"revisionTime": "2016-07-29T01:47:19Z"
 		},
 		{
+			"checksumSHA1": "Xx7sf6tcaZRjyK6aj5Hhe9LoY18=",
+			"path": "github.com/tracer/tracer/storage/postgres",
+			"revision": "eea86f827ed19c8ab6583f44ad21784fcdf172d5",
+			"revisionTime": "2016-07-29T01:47:19Z"
+		},
+		{
 			"checksumSHA1": "XTCmX545R+uDW6zErnvpn1/82K4=",
 			"path": "github.com/tracer/tracer/transport/grpc",
 			"revision": "eea86f827ed19c8ab6583f44ad21784fcdf172d5",
@@ -185,6 +221,12 @@
 			"path": "golang.org/x/net/trace",
 			"revision": "6a513affb38dc9788b449d59ffed099b8de18fa0",
 			"revisionTime": "2016-07-26T08:19:14Z"
+		},
+		{
+			"checksumSHA1": "likOl7O0BJntqagR050kkOBuY4o=",
+			"path": "golang.org/x/net/websocket",
+			"revision": "b400c2eff1badec7022a8c8f5bea058b6315eed7",
+			"revisionTime": "2016-06-19T19:44:24Z"
 		},
 		{
 			"checksumSHA1": "Y5+HnFe9xbBL8S6gf+N7IuBdDFg=",
