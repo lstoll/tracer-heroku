@@ -96,7 +96,7 @@ func main() {
 				fn(w, r)
 				return
 			}
-			sph := strings.Split(r.URL.Host, ":")
+			sph := strings.Split(r.Host, ":")
 			q := ""
 			if len(r.URL.RawQuery) > 0 {
 				q = "?" + r.URL.RawQuery
