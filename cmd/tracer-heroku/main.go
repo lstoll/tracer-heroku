@@ -57,7 +57,7 @@ func main() {
 	if err := db.Ping(); err != nil {
 		log.Fatalf("Error opening database: %q", err)
 	}
-	storage := postgres.New(&sql.DB{})
+	storage := postgres.New(db)
 
 	srv := &server.Server{Storage: storage}
 
