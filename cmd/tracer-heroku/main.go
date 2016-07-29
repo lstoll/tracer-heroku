@@ -106,11 +106,11 @@ func main() {
 		}
 	}
 
-	mux := http.NewServeMux()
-	authedMux := http.NewServeMux()
+	grpcMux := http.NewServeMux()
+	httpMux := http.NewServeMux()
 
 	// Static UI content
-	authedMux.HandleFunc("/", auth(func(w http.ResponseWriter, r *http.Request) {
+	httpMux.HandleFunc("/", auth(func(w http.ResponseWriter, r *http.Request) {
 		if strings.Contains(r.URL.Path, ".") {
 			http.ServeFile(w, r, filepath.Join(*fTemplate, r.URL.Path))
 			return
@@ -119,12 +119,12 @@ func main() {
 	}))
 
 	// HTTP Handlers
-	thttp.New(srv, "", authedMux)
-	zipkinhttp.New(srv, "", authedMux)
+	thttp.New(srv, "", httpMux)
+	zipkinhttp.New(srv, "", httpMux)
 
 	// set up gRPC
 	grpclis, wsh := wsnet.HandlerWithKeepalive(20 * time.Second)
-	mux.Handle("/grpc", wsh)
+	grpcMux.Handle("/grpc", wsh)
 	s := grpc.NewServer()
 	tgrpc.NewWithGRPCServer(srv, "", s)
 	go func() {
@@ -135,8 +135,10 @@ func main() {
 		}
 	}()
 
-	// Bind the authed mux last
-	mux.HandleFunc("/", enforceSSL(auth(authedMux.ServeHTTP)))
+	// Bind the http mux last
+	mux := http.NewServeMux()
+	mux.HandleFunc("/grpc", enforceSSL(auth(grpcMux.ServeHTTP)))
+	mux.HandleFunc("/", enforceSSL(auth(httpMux.ServeHTTP)))
 
 	// Run it up
 	hl, err := net.Listen("tcp", *host+":"+strconv.Itoa(*port))

@@ -78,10 +78,10 @@
 			"revisionTime": "2016-06-23T22:06:37Z"
 		},
 		{
-			"checksumSHA1": "lBhZqKT8s5E4hpMRy3WDWswhUb4=",
+			"checksumSHA1": "dWRLDEeubAAKdIRnbn6ff6TIZZY=",
 			"path": "github.com/lstoll/wsnet",
-			"revision": "c805d453086e687b042fe039f7e663d5ae68f502",
-			"revisionTime": "2016-07-29T00:45:42Z"
+			"revision": "b9acb22c274ea59c0a8f942aaf44015f3ea93701",
+			"revisionTime": "2016-07-29T13:49:12Z"
 		},
 		{
 			"checksumSHA1": "bKMZjd2wPw13VwoE7mBeSv5djFA=",
@@ -158,12 +158,6 @@
 		{
 			"checksumSHA1": "SsZMFA42rmGfdoPL1D4UUIkV+nQ=",
 			"path": "github.com/tracer/tracer/server",
-			"revision": "eea86f827ed19c8ab6583f44ad21784fcdf172d5",
-			"revisionTime": "2016-07-29T01:47:19Z"
-		},
-		{
-			"checksumSHA1": "fg3GnxUDf/JJZzBPnH78yjR3bBo=",
-			"path": "github.com/tracer/tracer/storage/null",
 			"revision": "eea86f827ed19c8ab6583f44ad21784fcdf172d5",
 			"revisionTime": "2016-07-29T01:47:19Z"
 		},

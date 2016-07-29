@@ -17,16 +17,15 @@ import (
 )
 
 func main() {
-	host := flag.String("addr", "", "addr (i.e abc.herokuapp.com:post) of the target")
-	proto := flag.String("proto", "wss", "protocol (ws, wss) for the target")
+	addr := flag.String("addr", "ws://localhost:5000/grpc", "addr (i.e wss://user:pass@abc.herokuapp.com:port/grpc) of the target")
 	flag.Parse()
-	if *host == "" {
+	if *addr == "" {
 		flag.Usage()
 		os.Exit(1)
 	}
 
 	flag.Parse()
-	storage, err := tracer.NewGRPC(*proto+"://"+*host+"/grpc", &tracer.GRPCOptions{
+	storage, err := tracer.NewGRPC(*addr, &tracer.GRPCOptions{
 		QueueSize:     1024,
 		FlushInterval: 1 * time.Second,
 	}, grpc.WithInsecure(), grpc.WithDialer(wsnet.Dial))
