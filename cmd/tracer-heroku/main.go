@@ -31,6 +31,7 @@ func main() {
 	host := envflag.String("HOST", "0.0.0.0", "Host to listen on")
 	httpUsers := envflag.String("HTTP_USERS", "", "Credentials for web/HTTP access, format user:pass,user2:pass2")
 	//grpcKeys := envflag.String("GRPC_KEYS", "babababa,cdcdcdcdcd", "Keys for https://github.com/lstoll/grpce/tree/master/handshakeauth")
+	forceTLS := envflag.Bool("FORCE_TLS", false, "Redirect all connections to TLS")
 
 	envflag.Parse()
 	fTemplate := flag.String("t", "", "The `directory` containing the UI code")
@@ -88,6 +89,23 @@ func main() {
 		}
 	}
 
+	// SSLer
+	enforceSSL := func(fn http.HandlerFunc) http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			if !*forceTLS || r.Header.Get("X-Forwarded-Proto") == "https" {
+				fn(w, r)
+				return
+			}
+			sph := strings.Split(r.URL.Host, ":")
+			q := ""
+			if len(r.URL.RawQuery) > 0 {
+				q = "?" + r.URL.RawQuery
+			}
+			newURL := "https://" + sph[0] + r.URL.Path + q
+			http.Redirect(w, r, newURL, http.StatusMovedPermanently)
+		}
+	}
+
 	mux := http.NewServeMux()
 	authedMux := http.NewServeMux()
 
@@ -118,7 +136,7 @@ func main() {
 	}()
 
 	// Bind the authed mux last
-	mux.HandleFunc("/", auth(authedMux.ServeHTTP))
+	mux.HandleFunc("/", enforceSSL(auth(authedMux.ServeHTTP)))
 
 	// Run it up
 	hl, err := net.Listen("tcp", *host+":"+strconv.Itoa(*port))
